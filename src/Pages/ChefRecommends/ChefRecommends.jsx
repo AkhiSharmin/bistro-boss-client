@@ -17,7 +17,7 @@ const ChefRecommends = () => {
             <img
               src={img1}
               alt="Shoes"
-              className=" 
+              className="rounded shadow-2xl 
           w-[424px] h-[200px]"
             />
           </figure>
@@ -25,7 +25,7 @@ const ChefRecommends = () => {
             <h2 className="card-title">Caesar Salad</h2>
             <p>If a dog chews shoes whose shoes does he choose?</p>
             <div className="card-actions">
-              <button className="btn bg-slate-200 border-b-4 text-black border-b-orange-600 shadow-2xl border-0">
+              <button className="btn bg-slate-200 border-b-4 text-orange-500 border-b-orange-600 shadow-xl border-0">
                 ADD TO CART
               </button>
             </div>
@@ -36,7 +36,7 @@ const ChefRecommends = () => {
             <img
               src={img1}
               alt="Shoes"
-              className=" 
+              className=" rounded shadow-2xl 
           w-[424px] h-[200px]"
             />
           </figure>
@@ -44,7 +44,7 @@ const ChefRecommends = () => {
             <h2 className="card-title">Caesar Salad</h2>
             <p>If a dog chews shoes whose shoes does he choose?</p>
             <div className="card-actions">
-              <button className="btn bg-slate-200 border-b-4 text-black border-b-orange-600 shadow-2xl border-0">
+              <button className="btn bg-slate-200 border-b-4 text-orange-500 border-b-orange-600 shadow-xl border-0">
                 ADD TO CART
               </button>
             </div>
@@ -55,7 +55,7 @@ const ChefRecommends = () => {
             <img
               src={img1}
               alt="Shoes"
-              className=" 
+              className=" rounded shadow-2xl 
           w-[424px] h-[200px]"
             />
           </figure>
@@ -63,7 +63,7 @@ const ChefRecommends = () => {
             <h2 className="card-title">Caesar Salad</h2>
             <p>If a dog chews shoes whose shoes does he choose?</p>
             <div className="card-actions">
-              <button className="btn bg-slate-200 border-b-4 text-black border-b-orange-600 shadow-2xl border-0">
+              <button className="btn bg-slate-200 border-b-4 text-orange-500 border-b-orange-600 shadow-xl border-0">
                 ADD TO CART
               </button>
             </div>
