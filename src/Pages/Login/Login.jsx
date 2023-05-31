@@ -1,12 +1,16 @@
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   loadCaptchaEnginge,
   LoadCanvasTemplate,
-  LoadCanvasTemplateNoReload,
   validateCaptcha,
 } from "react-simple-captcha";
+import "./Login.css";
+
+import loginImg from "../../../assets/others/authentication.gif";
 
 const Login = () => {
+  const captchaRef = useRef(null);
+  const [disabled, setDisable] = useState(true);
   useEffect(() => {
     loadCaptchaEnginge(6);
   }, []);
@@ -19,18 +23,25 @@ const Login = () => {
     console.log(email, password);
   };
 
+  const handelValidateCaptcha = () => {
+    const user_captcha_value = captchaRef.current.value;
+    if (validateCaptcha(user_captcha_value)) {
+      setDisable(false);
+    } else {
+      setDisable(true);
+    }
+  };
+
   return (
-    <div className="hero min-h-screen bg-base-200">
-      <div className="hero-content flex-col md:flex-row-reverse">
+    <div className="hero min-h-screen bg-base-200 bg">
+      <div className="hero-content flex ">
         <div className="text-center md:w-1/2 lg:text-left">
-          <h1 className="text-5xl font-bold">Login now!</h1>
+          <h1 className="text-5xl font-bold text-center">Please Login</h1>
           <p className="py-6">
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-            excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
-            a id nisi.
+            <img src={loginImg} alt="" />
           </p>
         </div>
-        <div className="card md:w-1/2 max-w-sm shadow-2xl bg-base-100">
+        <div className="card md:w-1/2 max-w-sm shadow-2xl">
           <form onSubmit={handelLogin} className="card-body">
             <div className="form-control">
               <label className="label">
@@ -65,14 +76,21 @@ const Login = () => {
               </label>
               <input
                 type="text"
+                ref={captchaRef}
                 name="captcha"
                 placeholder="type the captcha above"
                 className="input input-bordered"
               />
-              <button className="btn btn-outline btn-xs">Button</button>
+              <button
+                onClick={handelValidateCaptcha}
+                className="btn btn-outline btn-xs mt-2"
+              >
+                Validated
+              </button>
             </div>
             <div className="form-control mt-6">
               <input
+                disabled={disabled}
                 className="btn btn-primary uppercase"
                 type="submit"
                 value="Login"
