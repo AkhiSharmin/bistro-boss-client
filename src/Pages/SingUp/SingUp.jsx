@@ -1,6 +1,19 @@
 import { Link } from "react-router-dom";
 import loginImg from "../../../assets/others/authentication.gif";
+import { useForm } from "react-hook-form";
+
 const SingUp = () => {
+  const {
+    register,
+    handleSubmit,
+
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => {
+    console.log(data);
+  };
+
   return (
     <div className="hero min-h-screen bg-base-200 bg">
       <div className="hero-content flex ">
@@ -11,17 +24,19 @@ const SingUp = () => {
           </p>
         </div>
         <div className="card md:w-1/2 max-w-sm shadow-2xl">
-          <form className="card-body">
+          <form onSubmit={handleSubmit(onSubmit)} className="card-body">
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Name</span>
               </label>
               <input
-                type="name"
+                type="text"
+                {...register("name")}
                 name="name"
                 placeholder="Enter Your Name"
                 className="input input-bordered"
               />
+              {errors.name && <span>This field is required</span>}
             </div>
             <div className="form-control">
               <label className="label">
@@ -29,6 +44,7 @@ const SingUp = () => {
               </label>
               <input
                 type="email"
+                {...register("email")}
                 name="email"
                 placeholder="email"
                 className="input input-bordered"
@@ -40,6 +56,7 @@ const SingUp = () => {
               </label>
               <input
                 type="password"
+                {...register("password")}
                 name="password"
                 placeholder="password"
                 className="input input-bordered"
@@ -49,6 +66,13 @@ const SingUp = () => {
                   Forgot password?
                 </a>
               </label>
+            </div>
+            <div className="form-control mt-6">
+              <input
+                className="btn btn-primary uppercase"
+                type="submit"
+                value="SingUp"
+              />
             </div>
           </form>
           <p className="text-center py-4 text-xl">
