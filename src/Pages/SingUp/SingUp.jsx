@@ -31,12 +31,14 @@ const SingUp = () => {
               </label>
               <input
                 type="text"
-                {...register("name")}
+                {...register("name", { required: true })}
                 name="name"
                 placeholder="Enter Your Name"
                 className="input input-bordered"
               />
-              {errors.name && <span>This field is required</span>}
+              {errors.name && (
+                <span className="text-red-600">Name field is required</span>
+              )}
             </div>
             <div className="form-control">
               <label className="label">
@@ -44,11 +46,14 @@ const SingUp = () => {
               </label>
               <input
                 type="email"
-                {...register("email")}
+                {...register("email", { required: true })}
                 name="email"
                 placeholder="email"
                 className="input input-bordered"
               />
+              {errors.email && (
+                <span className="text-red-600">Email field is required</span>
+              )}
             </div>
             <div className="form-control">
               <label className="label">
@@ -56,11 +61,18 @@ const SingUp = () => {
               </label>
               <input
                 type="password"
-                {...register("password")}
+                {...register("password", {
+                  required: true,
+                  minLength: 6,
+                  maxLength: 14,
+                })}
                 name="password"
                 placeholder="password"
                 className="input input-bordered"
               />
+              {errors.password?.type === "required" && (
+                <p className="text-red-600">Password is required</p>
+              )}
               <label className="label">
                 <a href="#" className="label-text-alt link link-hover">
                   Forgot password?
