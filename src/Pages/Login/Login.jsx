@@ -7,10 +7,16 @@ import {
 import "./Login.css";
 
 import loginImg from "../../../assets/others/authentication.gif";
+import { useContext } from "react";
+import { AuthContext } from "../../Providers/AuthProvider";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const captchaRef = useRef(null);
   const [disabled, setDisable] = useState(true);
+
+  const { singIn } = useContext(AuthContext);
+
   useEffect(() => {
     loadCaptchaEnginge(6);
   }, []);
@@ -21,6 +27,14 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password;
     console.log(email, password);
+    singIn(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const handelValidateCaptcha = () => {
@@ -97,6 +111,14 @@ const Login = () => {
               />
             </div>
           </form>
+          <p className="text-center py-4 text-xl">
+            <small>
+              New Here?{" "}
+              <Link className="text-red-600" to="/singup">
+                Create an Account
+              </Link>
+            </small>
+          </p>
         </div>
       </div>
     </div>

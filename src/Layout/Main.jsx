@@ -4,9 +4,10 @@ import Navber from "../Pages/Shared/Navber/Navber";
 
 const Main = () => {
   const location = useLocation();
-  console.log(location);
+  // console.log(location);
 
-  const noHeaderFooter = location.pathname.includes("login");
+  const noHeaderFooter =
+    location.pathname.includes("login") || location.pathname.includes("singup");
 
   return (
     <div>
